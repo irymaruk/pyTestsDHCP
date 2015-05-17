@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Документация к модулю pyTestDHCP &mdash; Документация pyTestsDHCP 1.0</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Документация pyTestsDHCP 1.0" href="#" />
+    <link rel="next" title="Описание API:" href="api.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Содержание модулей Python"
+             >модули</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="Описание API:"
+             accesskey="N">вперёд</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Документация pyTestsDHCP 1.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pytestdhcp">
+<h1>Документация к модулю pyTestDHCP<a class="headerlink" href="#pytestdhcp" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id1">
+<h2>Описание модуля<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Модуль предназначен для выполнения функциональных тестов DHCP сервера.</p>
+</div>
+<div class="section" id="api">
+<h2>Описание API:<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Описание API:</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Структура модуля:<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>pyTestsDHCP
+    [docs]
+        [build]
+            [html]
+                index.html - документация
+    [src]         - библиотеки
+    basic_test.py - файл тестовых сценариев (test_*.py или *_test.py)
+    config.json   - конфигурационные параметры, тестовые данные
+    conftest.py   - дефолтные параметры pytest
+    start.bat     - запуск тестов
+    packets.log   - лог DHCP-пакетов
+    test_flow.log - лог тестового сценария
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Пример конфигурационного файла<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Файл конфигурации записан в формате <a class="reference external" href="http://www.json.org/json-ru.html">json</a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;using_config&quot;</span><span class="p">:</span> <span class="s">&quot;QA&quot;</span><span class="p">,</span>
+
+  <span class="s">&quot;GlobalParams&quot;</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="s">&quot;implicitly_time_wait&quot;</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="p">},</span>
+
+  <span class="s">&quot;RelayAgents&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;mx1&quot;</span><span class="p">:</span> <span class="s">&quot;192.168.80.165&quot;</span><span class="p">,</span>
+      <span class="s">&quot;mx2&quot;</span><span class="p">:</span> <span class="s">&quot;127.0.0.1&quot;</span>
+    <span class="p">},</span>
+
+  <span class="s">&quot;QA&quot;</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="s">&quot;DhcpSrv&quot;</span><span class="p">:</span> <span class="s">&quot;192.168.81.173&quot;</span><span class="p">,</span>
+
+    <span class="s">&quot;Users&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;user1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;Agent_Circuit_ID&quot;</span><span class="p">:</span> <span class="s">&quot;ISKRATEL:kv-257-1019 atm 3/2:1.40&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Agent_Remote_ID&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;chaddr&quot;</span><span class="p">:</span> <span class="s">&quot;FF:11:22:33:44:55&quot;</span>
+      <span class="p">},</span>
+      <span class="s">&quot;user2&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;Agent_Circuit_ID&quot;</span><span class="p">:</span> <span class="s">&quot;ISKRATEL:kv-257-1019 atm 3/5:1.40&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Agent_Remote_ID&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;chaddr&quot;</span><span class="p">:</span> <span class="s">&quot;FF:11:22:33:44:55&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="s">&quot;DEV&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">&quot;DhcpSrv&quot;</span><span class="p">:</span> <span class="s">&quot;192.168.81.96&quot;</span><span class="p">,</span>
+
+    <span class="s">&quot;Users&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;user1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;Agent_Circuit_ID&quot;</span><span class="p">:</span> <span class="s">&quot;ISKRATEL:kv-257-1019 atm 3/1:1.40&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Agent_Remote_ID&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;chaddr&quot;</span><span class="p">:</span> <span class="s">&quot;FF:11:22:33:44:56&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Основные параметры:</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>using_config</em> &#8211; какой из описаных далее словарей использовать. Предназначен для удобного переключения между
+тестовыми стендами.</li>
+<li><em>implicitly_time_wait</em> &#8211; время в секундах ожидания ответного пакета на последний отпраленный запрос.</li>
+<li><em>RelayAgents</em> &#8211; список локальных интерфейсов (на сервере где запускается тест), которые выполняют роль Relay агентов
+(Juniper MX).</li>
+<li><em>QA</em> / <em>DEV</em> &#8211; имя тестового стенда. Предназначено для групировки специфических для каждого стенда параметров.</li>
+<li><em>DhcpSrv</em> &#8211; адрес DHCP сервера</li>
+<li><em>Users</em> &#8211; список тестовых пользователей и их дефолтные параметры</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Если на сервере где выполняется тест есть два интерфейса, то можно отправлять пакеты и ожидать ответ через
+определенный интерфейс.</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Пример сценария<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="docutils">
+<dt>Следующий код выполняет такие действия:</dt>
+<dd><ul class="first last simple">
+<li>создем пользователя с параметрами установленными в config.json для &#8220;user1&#8221;</li>
+<li>в пакет, подготовленный к отправке, вместо дефолтной устанавливаем свою опцию 82</li>
+<li>отправляем пакет (ждем ответа в течении 5 сек)</li>
+<li>из полученного ответа Offer создаем Request Select и отправляем</li>
+<li>ожидаем половину времени аренды адреса</li>
+<li>на основании последнего отправленного Request Select создаем Request Renew и отправляем</li>
+<li>пять раз повторно отправляем последний Request Renew (с ожиданием ответа)</li>
+<li>на основании последнего отправленного Request Select создаем Release</li>
+<li>выполняем отправку пакета без ожидания ответа</li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">src.user</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="k">def</span> <span class="nf">test_2</span><span class="p">():</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">create_discover_packet</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">set_packet_opt82</span><span class="p">(</span><span class="s">&#39;ISKRATEL:kv-257-1019 atm 3/77:1.40&#39;</span><span class="p">)</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">send_packet</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">convert_offer_to_request_select</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">send_packet</span><span class="p">()</span>
+    <span class="n">lease_time</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_last_offer_lease_time</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">lease_time</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">convert_request_select_to_renew</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">send_packet</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">resend_last_renew</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">convert_request_select_to_release</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">send_packet</span><span class="p">(</span><span class="n">wait_replay</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Запуск<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Запуск тестов выполняется через start.bat. который вызывает модуль <a class="reference external" href="http://pytest.org/latest/">pytest</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Поиск тестов выполняется следующим образом: рекурсивно по всем каталогам, начиная от текущего, ищим модули (файлы)
+а в них класы и функции имя которых подходит под test_* или <a href="#id6"><span class="problematic" id="id7">*</span></a>_test.
+Ключ -k переопределяет патерн поиска файлов, например на &#8220;test_2&#8221;</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Логирование<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Во время выполнения теста формируется (дописывается) лог файл test_flow.log в котором фиксируются все выполненные
+действия клиента, отправленные и полученные пакеты и т.д.
+Та же информация дублируется на консоль.</p>
+<p>Дополнительно формируется файл packets.log, в которм фиксируются все отправленные и принятые DHCP-пакеты.</p>
+<div class="section" id="test-flow-log">
+<h3>Пример файла test_flow.log:<a class="headerlink" href="#test-flow-log" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>2015-05-16 21:18:45,516 : INFO :
+
+     ##########   NEW TEST SESSION STARTED   ##########
+
+2015-05-16 21:18:45,516 : INFO : Test &quot;basic_test.test_2&quot; started
+2015-05-16 21:18:45,517 : INFO : MX ip = 192.168.80.165 ready for sending packets to DHCP server ip = 192.168.81.96
+2015-05-16 21:18:45,517 : INFO : MX ip = 127.0.0.1 ready for sending packets to DHCP server ip = 192.168.81.96
+2015-05-16 21:18:45,519 : INFO : Default User params {&#39;Agent_Circuit_ID&#39;: &#39;ISKRATEL:kv-257-1019 atm 3/2:1.40&#39;, &#39;chaddr&#39;: &#39;FF:11:22:33:44:55&#39;, &#39;Agent_Remote_ID&#39;: &#39;&#39;}
+2015-05-16 21:18:45,519 : INFO : User created with name = &quot;user1&quot;
+2015-05-16 21:18:45,519 : INFO : Discover packet with default user params created
+2015-05-16 21:18:45,519 : INFO : Set option &quot;option 82&quot; as = &quot;ISKRATEL:kv-257-1019 atm 3/77:1.40&quot;
+2015-05-16 21:18:45,519 : INFO : &quot;user1&quot; send DISCOVER with new xid = 1291845632
+2015-05-16 21:18:46,019 : INFO : Receive packet OFFER with xid = 1291845632
+2015-05-16 21:18:46,020 : INFO : Last Offer packet with xid = 1291845632 converted to Request Select and ready to send
+2015-05-16 21:18:46,023 : INFO : &quot;user1&quot; send REQUEST with new xid = 1308622848
+2015-05-16 21:18:46,523 : INFO : Receive packet ACK with xid = 1308622848
+2015-05-16 21:18:46,525 : INFO : Last Offer receive Lease time = 120
+2015-05-16 21:18:46,525 : INFO : Start waiting for 6 seconds...
+2015-05-16 21:18:52,525 : INFO : Stop waiting
+2015-05-16 21:18:52,526 : INFO : Last Request Select packet with xid = 1308622848 converted to Request Renew and ready to send
+2015-05-16 21:18:52,529 : INFO : &quot;user1&quot; send REQUEST with new xid = 67108864
+2015-05-16 21:18:53,029 : INFO : Receive packet ACK with xid = 67108864
+2015-05-16 21:18:53,029 : INFO : Prepare last Renew with xid = 67108864 for sending
+2015-05-16 21:18:53,030 : INFO : &quot;user1&quot; send REQUEST with new xid = 268435456
+2015-05-16 21:18:53,530 : INFO : Receive packet ACK with xid = 268435456
+2015-05-16 21:18:53,530 : INFO : Prepare last Renew with xid = 268435456 for sending
+2015-05-16 21:18:53,532 : INFO : &quot;user1&quot; send REQUEST with new xid = 687865856
+2015-05-16 21:18:54,032 : INFO : Receive packet ACK with xid = 687865856
+2015-05-16 21:18:54,033 : INFO : Last Request Select packet with xid = 1308622848 converted to Release and ready to send
+2015-05-16 21:18:54,033 : INFO : &quot;user1&quot; send RELEASE with new xid = 687865856
+2015-05-16 21:18:54,035 : INFO : Test &quot;basic_test.test_2&quot; finished
+</pre></div>
+</div>
+</div>
+<div class="section" id="packets-log">
+<h3>Пример файла packets.log:<a class="headerlink" href="#packets-log" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>2015-05-16 21:24:58,496 : DEBUG : Send packet to 192.168.81.96:
+ # Header fields
+op : BOOTREQUEST
+htype : 1
+hlen : 6
+hops : 1
+xid : 1224736768
+secs : 0
+flags : 32768
+ciaddr : 0.0.0.0
+yiaddr : 0.0.0.0
+siaddr : 0.0.0.0
+giaddr : 192.168.80.165
+chaddr : ff:11:22:33:44:55
+sname :
+file :
+# Options fields
+dhcp_message_type : DHCP_DISCOVER
+relay_agent :
+
+2015-05-16 21:24:58,611 : DEBUG : Recived packet from [192, 168, 81, 96]:
+ # Header fields
+op : BOOTREPLY
+htype : 1
+hlen : 6
+hops : 1
+xid : 1224736768
+secs : 0
+flags : 32768
+ciaddr : 0.0.0.0
+yiaddr : 12.1.5.89
+siaddr : 0.0.0.0
+giaddr : 192.168.80.165
+chaddr : ff:11:22:33:44:55
+sname : usapp1
+file :
+# Options fields
+server_identifier : 3232256352
+relay_agent :
+subnet_mask : 255.255.255.0
+domain_name_server : 192.168.85.50 - 192.168.80.100 -
+dhcp_message_type : DHCP_OFFER
+router : 10.12.11.1 -
+ip_address_lease_time : 120
+</pre></div>
+</div>
+<div class="section" id="id9">
+<h4>Навигация<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span>Алфавитный указатель</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span>Состав модуля</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Поиск</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Оглавление</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Документация к модулю pyTestDHCP</a><ul>
+<li><a class="reference internal" href="#id1">Описание модуля</a></li>
+<li><a class="reference internal" href="#api">Описание API:</a></li>
+<li><a class="reference internal" href="#id2">Структура модуля:</a></li>
+<li><a class="reference internal" href="#id3">Пример конфигурационного файла</a></li>
+<li><a class="reference internal" href="#id4">Пример сценария</a></li>
+<li><a class="reference internal" href="#id5">Запуск</a></li>
+<li><a class="reference internal" href="#id8">Логирование</a><ul>
+<li><a class="reference internal" href="#test-flow-log">Пример файла test_flow.log:</a></li>
+<li><a class="reference internal" href="#packets-log">Пример файла packets.log:</a><ul>
+<li><a class="reference internal" href="#id9">Навигация</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Следующий раздел</h4>
+  <p class="topless"><a href="api.html"
+                        title="следующая глава">Описание API:</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Эта страница</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Исходный текст</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Искать" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Введите слова для поиска или имя модуля, класса или функции.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Igor Rymaruk.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="_sources/index.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

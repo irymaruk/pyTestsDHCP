@@ -1,0 +1,41 @@
+{
+  "using_config": "QA",
+
+  "GlobalParams" : {
+    "implicitly_time_wait": 5
+  },
+
+  "RelayAgents": {
+      "mx1": "192.168.80.165",
+      "mx2": "127.0.0.1"
+    },
+
+  "QA" : {
+    "DhcpSrv": "192.168.81.173",
+
+    "Users": {
+      "user1": {
+        "Agent_Circuit_ID": "ISKRATEL:kv-257-1019 atm 3/2:1.40",
+        "Agent_Remote_ID": "",
+        "chaddr": "FF:11:22:33:44:55"
+      },
+      "user2": {
+        "Agent_Circuit_ID": "ISKRATEL:kv-257-1019 atm 3/5:1.40",
+        "Agent_Remote_ID": "",
+        "chaddr": "FF:11:22:33:44:55"
+      }
+    }
+  },
+
+  "DEV": {
+    "DhcpSrv": "192.168.81.96",
+
+    "Users": {
+      "user1": {
+        "Agent_Circuit_ID": "ISKRATEL:kv-257-1019 atm 3/1:1.40",
+        "Agent_Remote_ID": "",
+        "chaddr": "FF:11:22:33:44:56"
+      }
+    }
+  }
+}
