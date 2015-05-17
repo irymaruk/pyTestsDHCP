@@ -22,7 +22,7 @@
             [build]
                 [html]
                     index.html - документация
-        [src]         - библиотеки
+        [pytestsdhcp]         - библиотеки
         basic_test.py - файл тестовых сценариев (test_*.py или *_test.py)
         config.json   - конфигурационные параметры, тестовые данные
         conftest.py   - дефолтные параметры pytest
@@ -111,7 +111,7 @@
 ::
 
     import pytest
-    from src.user import User
+    from pytestsdhcp.user import User
 
     def test_2():
         user = User()

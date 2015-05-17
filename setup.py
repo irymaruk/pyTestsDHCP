@@ -8,5 +8,8 @@ setup(name='pytestsdhcp',
       author_email='rymaruk@gmail.com',
       license='MIT',
       packages=['pytestsdhcp'],
-      zip_safe=False
+      zip_safe=False,
+      install_requires=[
+          'pydhcplib',
+      ],
       )
