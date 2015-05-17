@@ -1,10 +1,10 @@
 Описание API:
 -------------
-.. automodule:: user
+.. automodule:: pytestsdhcp.user
     :members:
 
 --------------
 
-.. automodule:: client
+.. automodule:: pytestsdhcp.client
     :members:
 

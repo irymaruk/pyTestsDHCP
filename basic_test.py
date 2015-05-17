@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import pytest
-from src.user import User
+from pytestsdhcp.user import User
 
 def test_1():
     user = User()
