@@ -18,11 +18,8 @@
 ::
 
     pyTestsDHCP
-        [docs]
-            [build]
-                [html]
-                    index.html - документация
-        [pytestsdhcp]         - библиотеки
+        [docs]        - документация
+        [pytestsdhcp] - библиотеки
         basic_test.py - файл тестовых сценариев (test_*.py или *_test.py)
         config.json   - конфигурационные параметры, тестовые данные
         conftest.py   - дефолтные параметры pytest
@@ -89,7 +86,6 @@
  - *Users* -- список тестовых пользователей и их дефолтные параметры
 
 .. note::
-
     Если на сервере где выполняется тест есть два интерфейса, то можно отправлять пакеты и ожидать ответ через
     определенный интерфейс.
 
@@ -233,9 +229,16 @@
     ip_address_lease_time : 120
 
 
+Что нужно, чтоб начать писать тест?
+-----------------------------------
+
+    1. Установить `Python 2.7.x <https://www.python.org/downloads/>`_
+    2. Скачать проект с svn://svn/export/svnroot/kvn/Docs/04-testing/DhcpTest/pyTestsDHCP или `github <https://github.com/irymaruk/pyTestsDHCP.git>`_
+    3. Дополнительно можно установить IDE `Pycharm <https://www.jetbrains.com/pycharm/download/>`_
+
 
 Навигация
-=========
+---------
 
 * :ref:`genindex`
 * :ref:`modindex`
